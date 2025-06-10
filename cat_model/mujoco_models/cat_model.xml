@@ -1,0 +1,142 @@
+<!-- Converted from urdf with urdf2mjcf -->
+<!-- Model edited by Jessica Anz -->
+
+<mujoco model="cat_model.SLDASM">
+  <option iterations="50" timestep="0.001" solver="PGS" gravity="0 0 -9.81" />
+
+  <compiler angle="radian" meshdir="meshes" eulerseq="zyx" autolimits="true" />
+
+  <default>
+    <joint limited="true" damping="0.01" armature="0.01" frictionloss="0.01" />
+    <geom condim="4" contype="1" conaffinity="15" friction="0.9 0.2 0.2" solref="0.001 2" />
+    <motor ctrllimited="true" />
+    <equality solref="0.001 2" />
+    <default class="visualgeom">
+      <geom material="visualgeom" condim="1" contype="0" conaffinity="0" />
+    </default>
+  </default>
+
+  <asset>
+    <mesh name="base_link" content_type="model/stl" file="base_link.STL" />
+    <mesh name="body" content_type="model/stl" file="body.STL" />
+    <mesh name="upperleg_fl" content_type="model/stl" file="upperleg_fl.STL" />
+    <mesh name="lowerleg_fl" content_type="model/stl" file="lowerleg_fl.STL" />
+    <mesh name="upperleg_fr" content_type="model/stl" file="upperleg_fr.STL" />
+    <mesh name="lowerleg_fr" content_type="model/stl" file="lowerleg_fr.STL" />
+    <mesh name="upperleg_bl" content_type="model/stl" file="upperleg_bl.STL" />
+    <mesh name="lowerleg_bl" content_type="model/stl" file="lowerleg_bl.STL" />
+    <mesh name="upperleg_br" content_type="model/stl" file="upperleg_br.STL" />
+    <mesh name="lowerleg_br" content_type="model/stl" file="lowerleg_br.STL" />
+    <texture name="texplane" type="2d" builtin="checker" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" width="100" height="100" />
+    <material name="matplane" reflectance="0." texture="texplane" texrepeat="1 1" texuniform="true" />
+    <material name="visualgeom" rgba="0.5 0.9 0.2 1" />
+  </asset>
+
+  <worldbody>
+    <light directional="true" diffuse="0.4 0.4 0.4" specular="0.1 0.1 0.1" pos="0 0 5.0" dir="0 0 -1" castshadow="false" />
+    <light directional="true" diffuse="0.6 0.6 0.6" specular="0.2 0.2 0.2" pos="0 0 4" dir="0 0 -1" />
+    <geom name="ground" type="plane" pos="0 0 0" size="100 100 0.001" quat="1 0 0 0" material="matplane" condim="3" conaffinity="15" />
+    <camera name="fixed" pos="0 -3.0 0.6653198081776186" xyaxes="1 0 0 0 0 1" />
+    <camera name="track" mode="trackcom" pos="0 -3.0 0.6653198081776186" xyaxes="1 0 0 0 0 1" />
+    <body name="root" pos="0 0 0.16531980817761854" quat="1 0 0 0">
+      <freejoint name="root" />
+      <inertial pos="0.054702 0.046613 0.11825" mass="1.1876" diaginertia="0.0018536 0.0071097 0.0062115"/>
+  
+      <geom type="mesh" rgba="1 1 1 0.35" mesh="base_link" contype="1" conaffinity="0" density="0" group="1" class="visualgeom" />
+      <geom type="mesh" rgba="1 1 1 0.35" mesh="base_link" />
+      <geom pos="-0.04859 0.11829 0.013453" quat="0.707105 0.707108 0 0" type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="body" contype="1" conaffinity="0" density="0" group="1" class="visualgeom" />
+      <geom type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="body" pos="-0.04859 0.11829 0.013453" quat="0.707105 0.707108 0 0" />
+      
+      <body name="upperleg_fl" pos="0.08475 -0.0193398 -0.0349605" quat="0.39098 0 0.920399 3.38081e-06">
+        <inertial pos="0.024758 -0.02325 0.024007" quat="0.275606 0.275605 -0.651185 0.651185" mass="0.064696" diaginertia="2.08185e-05 1.56075e-05 1.4023e-05" />
+        <joint name="hip_fl" pos="0 0 0" axis="0 1 0" range="-1.57 1.57" />
+        <geom type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="upperleg_fl" contype="1" conaffinity="0" density="0" group="1" class="visualgeom" />
+        <geom type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="upperleg_fl" />
+        <body name="lowerleg_fl" pos="0.039486 0 0.038287" quat="0.917266 0 0.398275 0">
+          <inertial pos="-4.9993e-09 -0.02325 0.036463" quat="1 0 0 -4.48011e-06" mass="0.074855" diaginertia="3.3795e-05 2.3514e-05 2.0453e-05" />
+          <joint name="knee_fl" pos="0 0 0" axis="0 1 0" range="-1.57 1.57" />
+          <geom type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="lowerleg_fl" contype="1" conaffinity="0" density="0" group="1" class="visualgeom" />
+          <geom type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="lowerleg_fl" />
+        </body>
+      </body>
+
+      <body name="upperleg_fr" pos="0.08475 0.0658472 -0.0349602" quat="-3.38051e-06 0.920317 0 -0.391172">
+        <inertial pos="0.024758 0.02325 0.024007" quat="0.275606 0.275605 -0.651185 0.651185" mass="0.064696" diaginertia="2.08185e-05 1.56075e-05 1.4023e-05" />
+        <joint name="hip_fr" pos="0 0 0" axis="0 1 0" range="-1.57 1.57" />
+        <geom type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="upperleg_fr" contype="1" conaffinity="0" density="0" group="1" class="visualgeom" />
+        <geom type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="upperleg_fr" />
+        <body name="lowerleg_fr" pos="0.039486 0 0.038287" quat="0.921712 0 0.387875 0">
+          <inertial pos="-4.552e-09 0.02325 0.036463" quat="1 -7.96272e-07 3.56885e-12 -4.48196e-06" mass="0.074855" diaginertia="3.3795e-05 2.3514e-05 2.0453e-05" />
+          <joint name="knee_fr" pos="0 0 0" axis="0 1 0" range="-1.57 1.57" />
+          <geom type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="lowerleg_fr" contype="1" conaffinity="0" density="0" group="1" class="visualgeom" />
+          <geom type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="lowerleg_fr" />
+        </body>
+      </body>
+
+      <body name="upperleg_bl" pos="-0.084749 -0.0342498 -0.0349606" quat="-3.63614e-06 0.989909 0 0.141706">
+        <inertial pos="-0.009763 0.02325 0.034253" quat="0.700478 0.70047 -0.0966244 0.0966234" mass="0.061349" diaginertia="1.92449e-05 1.39801e-05 1.2908e-05" />
+        <joint name="hip_bl" pos="0 0 0" axis="0 1 0" range="-1.57 1.57" />
+        <geom type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="upperleg_bl" contype="1" conaffinity="0" density="0" group="1" class="visualgeom" />
+        <geom type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="upperleg_bl" />
+        <body name="lowerleg_bl" pos="-0.015108 0 0.052884" quat="-3.63039e-06 0.152231 -5.59175e-07 -0.988345">
+          <inertial pos="-4.9664e-09 -0.02325 0.036463" quat="1 0 0 -4.48025e-06" mass="0.074855" diaginertia="3.3795e-05 2.3514e-05 2.0453e-05" />
+          <joint name="knee_bl" pos="0 0 0" axis="0 1 0" range="-1.57 1.57" />
+          <geom type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="lowerleg_bl" contype="1" conaffinity="0" density="0" group="1" class="visualgeom" />
+          <geom type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="lowerleg_bl" />
+        </body>
+      </body>
+
+      <body name="upperleg_br" pos="-0.084749 0.0807542 -0.0349601" quat="0.13845 0 -0.990369 -3.63783e-06">
+        <inertial pos="-0.009763 -0.02325 0.034253" quat="0.700478 0.70047 -0.0966244 0.0966234" mass="0.061349" diaginertia="1.92449e-05 1.39801e-05 1.2908e-05" />
+        <joint name="hip_br" pos="0 0 0" axis="0 1 0" range="-1.57 1.57" />
+        <geom type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="upperleg_br" contype="1" conaffinity="0" density="0" group="1" class="visualgeom" />
+        <geom type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="upperleg_br" />
+        <body name="lowerleg_br" pos="-0.015108 0 0.052884" quat="-3.63771e-06 0.138687 -5.09424e-07 -0.990336">
+          <inertial pos="-4.7344e-09 0.02325 0.036463" quat="1 -7.54829e-07 3.38175e-12 -4.48016e-06" mass="0.074855" diaginertia="3.3795e-05 2.3514e-05 2.0453e-05" />
+          <joint name="knee_br" pos="0 0 0" axis="0 1 0" range="-1.57 1.57" />
+          <geom type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="lowerleg_br" contype="1" conaffinity="0" density="0" group="1" class="visualgeom" />
+          <geom type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="lowerleg_br" />
+        </body>
+      </body>
+
+    </body>
+  </worldbody>
+
+  <actuator>
+    <motor name="hip_fl" joint="hip_fl" ctrllimited="true" ctrlrange="-1 1" gear="100" />
+    <motor name="knee_fl" joint="knee_fl" ctrllimited="true" ctrlrange="-1 1" gear="100" />
+    <motor name="hip_fr" joint="hip_fr" ctrllimited="true" ctrlrange="-1 1" gear="100" />
+    <motor name="knee_fr" joint="knee_fr" ctrllimited="true" ctrlrange="-1 1" gear="100" />
+    <motor name="hip_bl" joint="hip_bl" ctrllimited="true" ctrlrange="-1 1" gear="100" />
+    <motor name="knee_bl" joint="knee_bl" ctrllimited="true" ctrlrange="-1 1" gear="100" />
+    <motor name="hip_br" joint="hip_br" ctrllimited="true" ctrlrange="-1 1" gear="100" />
+    <motor name="knee_br" joint="knee_br" ctrllimited="true" ctrlrange="-1 1" gear="100" />
+  </actuator>
+
+  <sensor>
+    <actuatorpos name="hip_fl_p" actuator="hip_fl" />
+    <actuatorvel name="hip_fl_v" actuator="hip_fl" />
+    <actuatorfrc name="hip_fl_f" actuator="hip_fl" noise="0.001" />
+    <actuatorpos name="knee_fl_p" actuator="knee_fl" />
+    <actuatorvel name="knee_fl_v" actuator="knee_fl" />
+    <actuatorfrc name="knee_fl_f" actuator="knee_fl" noise="0.001" />
+    <actuatorpos name="hip_fr_p" actuator="hip_fr" />
+    <actuatorvel name="hip_fr_v" actuator="hip_fr" />
+    <actuatorfrc name="hip_fr_f" actuator="hip_fr" noise="0.001" />
+    <actuatorpos name="knee_fr_p" actuator="knee_fr" />
+    <actuatorvel name="knee_fr_v" actuator="knee_fr" />
+    <actuatorfrc name="knee_fr_f" actuator="knee_fr" noise="0.001" />
+    <actuatorpos name="hip_bl_p" actuator="hip_bl" />
+    <actuatorvel name="hip_bl_v" actuator="hip_bl" />
+    <actuatorfrc name="hip_bl_f" actuator="hip_bl" noise="0.001" />
+    <actuatorpos name="knee_bl_p" actuator="knee_bl" />
+    <actuatorvel name="knee_bl_v" actuator="knee_bl" />
+    <actuatorfrc name="knee_bl_f" actuator="knee_bl" noise="0.001" />
+    <actuatorpos name="hip_br_p" actuator="hip_br" />
+    <actuatorvel name="hip_br_v" actuator="hip_br" />
+    <actuatorfrc name="hip_br_f" actuator="hip_br" noise="0.001" />
+    <actuatorpos name="knee_br_p" actuator="knee_br" />
+    <actuatorvel name="knee_br_v" actuator="knee_br" />
+    <actuatorfrc name="knee_br_f" actuator="knee_br" noise="0.001" />
+  </sensor>
+</mujoco>

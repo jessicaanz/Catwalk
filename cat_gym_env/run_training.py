@@ -11,6 +11,9 @@ import cat_env
 import time
 from stable_baselines3 import PPO
 
+# Set to true for the policy to reset when the cat falls
+reset = True
+
 # Make training environment and load model
 env = gym.make("CatWalk-v0", render_mode="human")
 model = PPO.load("ppo_catwalk")
@@ -21,22 +24,21 @@ obs, _ = env.reset()
 # Open viewer
 env.render()
 
-# Wait for user to adjust camera
-print("Viewer opened. Adjust the camera, then press Enter to start the motion...")
-input()
-time.sleep(2)
-
 # Loop through actions of trained policy
-for _ in range(1000):
+for i in range(5000):
+
     # Print info for each action
     action, _ = model.predict(obs, deterministic=True)
     obs, reward, terminated, truncated, _ = env.step(action)
     print(f"Reward: {reward:.3f}, Action: {action}")
 
-    # Render to Mujococ
+    # Render to Mujoco
     env.render()
 
-    if terminated or truncated:
-        obs, _ = env.reset()
+    # Restarts policy when cat falls
+    if reset:
+        if terminated or truncated:
+            obs, _ = env.reset()
+
+# Close window when done
 env.close()
-input("Press Enter to close the viewer...")

@@ -1,6 +1,7 @@
 """
 setup.py
 Author: Jessica Anz
+Reference: https://gymnasium.farama.org/environments/mujoco/half_cheetah/
 Description: Setup the environment parameters
 """
 

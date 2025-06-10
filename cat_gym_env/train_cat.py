@@ -21,7 +21,7 @@ check_env(env, warn=True)
 model = PPO("MlpPolicy", env, verbose=1)
 
 # Train model for total timesteps
-model.learn(total_timesteps=1_000_000)
+model.learn(total_timesteps=300_000)
 
 # Save trained policy
 model.save("ppo_catwalk")

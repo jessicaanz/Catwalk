@@ -2,7 +2,7 @@
 test_env.py
 Author: Jessica Anz
 Reference: https://gymnasium.farama.org/introduction/basic_usage/
-Description: Tests the OpenAI gym setup for the quadruped cat robot
+Description: A test script for the OpenAI gym setup for the quadruped cat robot, only need to check it once
 """
 
 # Imports
