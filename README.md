@@ -38,6 +38,7 @@ Launch the mujoco simulator using the following command:
 python openmujoco.py
 ```
 This should load a mujoco simulation window similar to the one shown below. The simulation view can be adjusted manually or within the GUI. The control torques of all motors can be adjusted using the sliders on the right side of the GUI.
+
 <img src="images/mujoco_simulator.png" alt="Mujoco simulation window with cat robot model loaded." width="500"/>
 
 ### Run Trainings
